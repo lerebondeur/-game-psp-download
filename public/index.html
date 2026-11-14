@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,46 +6,144 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAME PSP DOWNLOAD</title>
 <style>
+* { box-sizing: border-box; }
 body {
   margin: 0;
-  background: #101525;
+  background: #0b1020;
   color: white;
-  font-family: Arial;
-  text-align: center;
+  font-family: Arial, sans-serif;
 }
 header {
-  background: #087d46;
-  padding: 25px;
+  background: linear-gradient(120deg,#087d46,#063c70);
+  padding: 30px 15px;
+  text-align: center;
 }
-h1 { margin: 0; }
-main { padding: 20px; }
-input {
-  padding: 12px;
-  width: 85%;
-  border-radius: 8px;
-  border: none;
+header h1 { margin: 0; font-size: 27px; }
+header p { color: #d8e9ff; }
+main { padding: 20px; max-width: 1100px; margin: auto; }
+.search {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #34445e;
+  border-radius: 10px;
+  background: #18243a;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+h2 { text-align: center; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
+  gap: 15px;
 }
 .game {
-  background: #202b40;
-  margin: 20px auto;
-  padding: 20px;
+  background: #18243a;
+  border: 1px solid #293a55;
   border-radius: 12px;
-  max-width: 350px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 14px;
+}
+.cover {
+  height: 145px;
+  background: linear-gradient(145deg,#087d46,#10264b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+.game h3 {
+  font-size: 14px;
+  padding: 0 8px;
+  min-height: 35px;
+}
+.number { color: #69e6a5; font-size: 12px; }
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #aab6c9;
 }
 </style>
 </head>
 <body>
+
 <header>
 <h1>🎮 GAME PSP DOWNLOAD</h1>
-<p>Votre univers de jeux PPSSPP</p>
+<p>Your PSP Gaming Universe | Ton univers de jeux PSP</p>
 </header>
+
 <main>
-<h2>Bibliothèque de jeux</h2>
-<input type="text" placeholder="Rechercher un jeu...">
-<div class="game">
-<h3>Mes jeux PPSSPP</h3>
-<p>Les jeux disponibles seront affichés ici.</p>
-</div>
+<h2>🔥 Notre bibliothèque de jeux</h2>
+<input class="search" id="search"
+placeholder="Rechercher un jeu... / Search a game..."
+oninput="searchGames()">
+
+<div class="grid" id="games"></div>
+<p id="empty" style="display:none;text-align:center">
+Aucun jeu trouvé / No game found.
+</p>
 </main>
+
+<footer>
+GAME PSP DOWNLOAD © 2026
+<br>All rights reserved.
+</footer>
+
+<script>
+const games = [
+"GTA Vice City Stories",
+"Call of Duty: Roads to Victory",
+"Downhill Domination",
+"Naruto Shippuden: Legends - Akatsuki Rising",
+"Army of Two: The 40th Day",
+"God of War: Chains of Olympus",
+"Coded Arms: Contagion",
+"eFootball 2025 NC PC-V",
+"eFootball 2026 PSP Lop Play V1",
+"Mortal Kombat: Unchained",
+"Medal of Honor: Heroes",
+"Tom Clancy's Ghost Recon",
+"Naruto: Ultimate Ninja Heroes",
+"GTA LCS by TDG",
+"Naruto Shippuden: Ultimate Ninja Heroes",
+"Naruto Shippuden: Ultimate Ninja Impact",
+"FC 26 PSP Lop Play",
+"eFootball 2026 No Texture by BeteGaming",
+"eFootball 2024 PSP C19"
+];
+
+function displayGames(list) {
+  const area = document.getElementById("games");
+  area.innerHTML = "";
+
+  list.forEach((name) => {
+    const number = games.indexOf(name) + 1;
+    area.innerHTML += `
+      <div class="game">
+        <div class="cover">🎮</div>
+        <div class="number">GAME ${number}</div>
+        <h3>${name}</h3>
+      </div>`;
+  });
+
+  document.getElementById("empty").style.display =
+    list.length ? "none" : "block";
+}
+
+function searchGames() {
+  const value = document.getElementById("search")
+    .value.toLowerCase();
+
+  const filtered = games.filter(game =>
+    game.toLowerCase().includes(value)
+  );
+
+  displayGames(filtered);
+}
+
+displayGames(games);
+</script>
+
 </body>
 </html>
