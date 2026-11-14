@@ -3,20 +3,19 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GAME PSP DOWNLOAD</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#07110c;color:white;font-family:Arial,sans-serif}
-header{background:#0b2819;padding:25px 12px;text-align:center;border-bottom:3px solid #20d66b}
-header h1{color:#20e879;margin:0;font-size:27px}
-header p{color:#c4e8d1}
-.search{width:90%;padding:14px;margin:18px 5%;border-radius:12px;border:2px solid #20d66b;background:#14251b;color:white;font-size:16px}
+body{margin:0;background:#07110c;color:white;font-family:Arial}
+header{text-align:center;background:#0b2819;padding:25px 10px;border-bottom:3px solid #20e879}
+header h1{color:#20e879}
+input{width:90%;margin:20px 5%;padding:14px;border-radius:10px;border:2px solid #20e879;background:#14251b;color:white;font-size:16px}
 h2{text-align:center;color:#20e879}
 .games{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:12px}
-.game{background:#13251a;border:1px solid #237c49;border-radius:12px;padding:15px 8px;text-align:center;min-height:125px}
-.game .cover{font-size:38px}
-.game h3{font-size:14px;line-height:1.4}
+.game{background:#13251a;border:1px solid #237c49;border-radius:12px;padding:10px;text-align:center}
+.game img{width:100%;height:190px;object-fit:contain;border-radius:8px;background:#09140d}
+.game h3{font-size:14px}
 .game p{font-size:12px;color:#b5d9c1}
 footer{text-align:center;padding:25px;color:#9dbba8}
 </style>
@@ -24,47 +23,60 @@ footer{text-align:center;padding:25px;color:#9dbba8}
 <body>
 <header>
 <h1>🎮 GAME PSP DOWNLOAD</h1>
-<p>Ton univers de jeux PSP</p>
+<p>Ton univers de jeux</p>
 </header>
 
-<input class="search" id="search" placeholder="🔎 Rechercher un jeu..." oninput="rechercher()">
-
+<input id="search" placeholder="🔎 Rechercher un jeu..." oninput="rechercher()">
 <h2>TOUS LES JEUX</h2>
-<div class="games" id="games">
+<div class="games" id="games"></div>
 
-<div class="game"><div class="cover">🎮</div><h3>GTA Vice City Stories</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Call of Duty: Roads to Victory</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Downhill Domination</h3><p>Version à confirmer</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Naruto Shippuden: Legends Akatsuki Rising</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Army of Two: The 40th Day</h3><p>Version à confirmer</p></div>
-<div class="game"><div class="cover">🎮</div><h3>God of War: Chains of Olympus</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Coded Arms: Contagion</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>eFootball 2025 NC PC-V</h3><p>Version modifiée</p></div>
-<div class="game"><div class="cover">🎮</div><h3>eFootball 2026 PSP Lop Play V1</h3><p>Version modifiée</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Mortal Kombat: Unchained</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Medal of Honor: Heroes</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Tom Clancy's Ghost Recon</h3><p>Version à confirmer</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Naruto: Ultimate Ninja Heroes</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>GTA LCS by TDG</h3><p>Version modifiée</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Naruto Shippuden: Ultimate Ninja Heroes</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>Naruto Shippuden: Ultimate Ninja Impact</h3><p>Jeu PSP</p></div>
-<div class="game"><div class="cover">🎮</div><h3>FC 26 PSP Lop Play</h3><p>Version modifiée</p></div>
-<div class="game"><div class="cover">🎮</div><h3>eFootball 2026 No Texture by BeteGaming</h3><p>Version modifiée</p></div>
-<div class="game"><div class="cover">🎮</div><h3>eFootball 2024 PSP C19</h3><p>Version modifiée</p></div>
-
-</div>
-
-<footer>
-<p>GAME PSP DOWNLOAD</p>
-<p>© 2026 - Tous droits réservés</p>
-</footer>
+<footer>GAME PSP DOWNLOAD © 2026</footer>
 
 <script>
-function rechercher(){
-let recherche=document.getElementById("search").value.toLowerCase();
-document.querySelectorAll(".game").forEach(jeu=>{
-jeu.style.display=jeu.innerText.toLowerCase().includes(recherche)?"block":"none";
+const jeux = [
+["GTA Vice City Stories","https://thumbnails.libretro.com/Sony%20-%20PlayStation%20Portable/Named_Boxarts/Grand%20Theft%20Auto%20-%20Vice%20City%20Stories%20(USA).png"],
+["Call of Duty: Roads to Victory",""],
+["Downhill Domination",""],
+["Naruto Shippuden: Legends Akatsuki Rising",""],
+["Army of Two: The 40th Day",""],
+["God of War: Chains of Olympus","https://thumbnails.libretro.com/Sony%20-%20PlayStation%20Portable/Named_Boxarts/God%20of%20War%20-%20Chains%20of%20Olympus%20(USA).png"],
+["Coded Arms: Contagion",""],
+["eFootball 2025 NC PC-V",""],
+["eFootball 2026 PSP Lop Play V1",""],
+["Mortal Kombat: Unchained",""],
+["Medal of Honor: Heroes",""],
+["Tom Clancy's Ghost Recon",""],
+["Naruto: Ultimate Ninja Heroes",""],
+["GTA LCS by TDG",""],
+["Naruto Shippuden: Ultimate Ninja Heroes",""],
+["Naruto Shippuden: Ultimate Ninja Impact",""],
+["FC 26 PSP Lop Play",""],
+["eFootball 2026 No Texture by BeteGaming",""],
+["eFootball 2024 PSP C19",""]
+];
+
+const conteneur=document.getElementById("games");
+
+jeux.forEach(jeu=>{
+ const carte=document.createElement("div");
+ carte.className="game";
+ const image=document.createElement("img");
+ image.alt="Couverture de "+jeu[0];
+ image.src=jeu[1] || "";
+ image.onerror=()=>{image.removeAttribute("src");image.alt="🎮 Image à ajouter";image.style.display="none";};
+ const titre=document.createElement("h3");
+ titre.textContent=jeu[0];
+ const info=document.createElement("p");
+ info.textContent=jeu[1]?"Couverture disponible":"Couverture à ajouter";
+ carte.append(image,titre,info);
+ conteneur.appendChild(carte);
 });
+
+function rechercher(){
+ const mot=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".game").forEach(carte=>{
+ carte.style.display=carte.innerText.toLowerCase().includes(mot)?"block":"none";
+ });
 }
 </script>
 </body>
